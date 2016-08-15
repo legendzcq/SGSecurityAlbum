@@ -144,6 +144,7 @@
             currentCount++;
             hud.progress = (double)currentCount / count;
             hud.label.text = [NSString stringWithFormat:@"Saving %@/%@",@(currentCount),@(count)];
+            
             if (currentCount == count) {
                 [hud hideAnimated:YES afterDelay:0.25f];
             }
