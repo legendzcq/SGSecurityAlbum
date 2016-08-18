@@ -36,9 +36,11 @@
 }
 
 - (void)setupView {
+    //此框架为控制器和view 分离形式，控制器和view中通过block回调进行数据交互
     SGPhotoView *photoView = [[SGPhotoView alloc] initWithFrame:[self getPhotoViewFrame]];
     self.photoView = photoView;
     self.photoView.controller = self;
+//    将缩略图装载进PhotoView
     self.photoView.browser = self.browser;
     self.photoView.index = self.index;
     [self.view addSubview:photoView];
@@ -91,7 +93,7 @@
     }];
 }
 
-#pragma mark - ToolBar Action
+#pragma mark - ToolBar Action  删除图片  需要修改
 - (void)trashAction {
     [[[SGBlockActionSheet alloc] initWithTitle:@"Please Confirm Delete" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
         if (buttonIndex == 0) {
@@ -104,7 +106,7 @@
         }
     } cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitlesArray:nil] showInView:self.view];
 }
-
+#pragma mark - export Action  导出图片到手机
 - (void)exportAction {
     [[[SGBlockActionSheet alloc] initWithTitle:@"Save To Where" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
         if (buttonIndex == 1) {

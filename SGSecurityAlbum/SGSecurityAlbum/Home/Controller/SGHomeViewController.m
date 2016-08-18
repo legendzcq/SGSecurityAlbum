@@ -30,7 +30,7 @@
 }
 
 - (void)setupView {
-    self.title = @"Agony";
+    self.title = @"图片浏览器";
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
     SGHomeView *view = [[SGHomeView alloc] initWithFrame:(CGRect){0, 0, [UIScreen mainScreen].bounds.size} collectionViewLayout:layout];
@@ -64,7 +64,7 @@
     app.window.rootViewController = [[SGAccountManager sharedManager] getRootViewController];
 }
 
-#pragma mark - 解析数据
+#pragma mark - 解析数据  修改成读取数据库
 - (void)loadFiles {
     SGFileUtil *util = [SGFileUtil sharedUtil];
     NSString *rootPath = util.rootPath;

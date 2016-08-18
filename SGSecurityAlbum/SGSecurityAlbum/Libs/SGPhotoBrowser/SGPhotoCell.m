@@ -17,7 +17,7 @@
 @end
 
 @implementation SGPhotoCellMaskView
-
+//右下角小对号类 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.6f];
@@ -70,10 +70,11 @@
     }
     return self;
 }
-
+#pragma mark -在此处根据URL赋值  后期可以修改为根据ID然后查询数据库赋值
 - (void)setModel:(SGPhotoModel *)model {
     _model = model;
     NSURL *thumbURL = model.thumbURL;
+//    在此处根据URL赋值  后期可以修改为根据ID然后查询数据库赋值
     if ([thumbURL isFileURL]) {
         self.imageView.image = [UIImage imageWithContentsOfFile:thumbURL.path];
     } else {

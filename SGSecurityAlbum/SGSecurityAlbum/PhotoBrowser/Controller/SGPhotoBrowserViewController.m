@@ -45,9 +45,11 @@
     NSString *photoPath = [SGFileUtil photoPathForRootPath:self.rootPath];
     NSString *thumbPath = [SGFileUtil thumbPathForRootPath:self.rootPath];
     NSMutableArray *photoModels = @[].mutableCopy;
+    //获取目录下所有的文件及其文件目录
     NSArray *fileNames = [mgr contentsOfDirectoryAtPath:photoPath error:nil];
     for (NSUInteger i = 0; i < fileNames.count; i++) {
         NSString *fileName = fileNames[i];
+//        拼装本地URL
         NSURL *photoURL = [NSURL fileURLWithPath:[photoPath stringByAppendingPathComponent:fileName]];
         NSURL *thumbURL = [NSURL fileURLWithPath:[thumbPath stringByAppendingPathComponent:fileName]];
         //缩略图，高清图模型
@@ -57,12 +59,19 @@
         [photoModels addObject:model];
     }
     
-    NSArray *photoURLs = @[@"http://img0.ph.126.net/PgCjtjY9cStBeK-rugbj_g==/6631715378048606880.jpg",
-                           @"http://img2.ph.126.net/MReos71sTqftWSZuXz_boQ==/6631554849350946263.jpg",
-                           @"http://img1.ph.126.net/0Pz-IkvpsDr3lqsZGdIO4A==/6631566943978852327.jpg"];
-    NSArray *thumbURLs = @[@"http://img2.ph.126.net/q9kJFjtxcHzzJZA5EMaSUg==/6631671397583497919.png",
-                           @"http://img1.ph.126.net/9blT0g2-VgAueTagWFARlA==/6631683492211398013.png",
-                           @"http://img1.ph.126.net/smEiDh0FuAVQFz3rcQQdrw==/6631691188792792414.png"];
+    NSArray *photoURLs = @[@"http://www.qqpk.cn/Article/UploadFiles/201401/20140112213059211.jpg",
+                           @"http://img5q.duitang.com/uploads/item/201506/02/20150602185303_UCukR.jpeg",
+                           @"http://www.bz55.com/uploads/allimg/121201/1-121201111T3-50.jpg",
+                           @"http://www.qqpk.cn/Article/UploadFiles/201401/20140112213059211.jpg",
+                           @"http://pic.yesky.com/uploadImages/2015/141/01/3FQS5IET54PE.jpg",
+                           @"http://img5.duitang.com/uploads/blog/201412/12/20141212190917_eLSWV.jpeg"];
+    
+    NSArray *thumbURLs = @[@"http://www.qqpk.cn/Article/UploadFiles/201401/20140112213059211.jpg",
+                           @"http://img5q.duitang.com/uploads/item/201506/02/20150602185303_UCukR.jpeg",
+                           @"http://www.bz55.com/uploads/allimg/121201/1-121201111T3-50.jpg",
+                           @"http://www.qqpk.cn/Article/UploadFiles/201401/20140112213059211.jpg",
+                           @"http://pic.yesky.com/uploadImages/2015/141/01/3FQS5IET54PE.jpg",
+                           @"http://img5.duitang.com/uploads/blog/201412/12/20141212190917_eLSWV.jpeg"];
     for (NSUInteger i = 0; i < photoURLs.count; i++) {
         NSURL *photoURL = [NSURL URLWithString:photoURLs[i]];
         NSURL *thumbURL = [NSURL URLWithString:thumbURLs[i]];

@@ -7,7 +7,8 @@
 //
 
 #import "SGFileUtil.h"
-
+#import "LKDBTool.h"
+#import "JMBImageTab.h"
 @implementation SGFileUtil
 
 + (instancetype)sharedUtil {
@@ -40,6 +41,21 @@
     }
     rootPath = [rootPath stringByAppendingPathComponent:name];
     [imageDate writeToFile:rootPath atomically:YES];
+    //存储数据库
+    JMBImageTab *ImageTab = [JMBImageTab new];
+    ImageTab.imageID = arc4random() % 100;
+    ImageTab.ImageName =name;
+    ImageTab.imageData =imageDate;
+    ImageTab.SaveFinder = @"1";
+    ImageTab.SaveType = 1;
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    ImageTab.SaveTime =locationString ;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [ImageTab save];
+    });
 }
 
 + (void)saveThumb:(UIImage *)image toRootPath:(NSString *)rootPath withName:(NSString *)name {
@@ -51,6 +67,22 @@
     }
     rootPath = [rootPath stringByAppendingPathComponent:name];
     [imageDate writeToFile:rootPath atomically:YES];
+    JMBImageTab *ImageTab = [JMBImageTab new];
+    ImageTab.imageID = arc4random() % 100;
+    ImageTab.ImageName =name;
+    ImageTab.imageData =imageDate;
+    
+    ImageTab.SaveFinder = @"1";
+    ImageTab.SaveType = 0;
+    
+    NSDate *  senddate=[NSDate date];
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+    NSString *  locationString=[dateformatter stringFromDate:senddate];
+    ImageTab.SaveTime =locationString ;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [ImageTab save];
+    });
 }
 
 - (void)setAccount:(SGAccount *)account {

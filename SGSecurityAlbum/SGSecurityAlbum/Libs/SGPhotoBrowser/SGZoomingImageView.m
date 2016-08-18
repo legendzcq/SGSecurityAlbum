@@ -102,7 +102,7 @@
 - (void)setSingleTapHandler:(SGZoomingImageViewTapHandlerBlock)handler {
     self.singleTapHandlerBlock = handler;
 }
-
+//点击大图0.2秒后可以隐藏或者显示导航栏，工具条
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint touchPt = [touch locationInView:self.innerImageView];
@@ -137,7 +137,7 @@
 - (nullable UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView; {
     return self.innerImageView.hud == nil ? self.innerImageView : nil;
 }
-
+//放大缩小
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
     CGSize boundsSize = self.bounds.size;
     CGRect frameToCenter = self.innerImageView.frame;

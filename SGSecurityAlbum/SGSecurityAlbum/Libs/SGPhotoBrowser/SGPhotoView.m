@@ -40,28 +40,35 @@
 }
 
 - (void)handleDoubleTap {
+//    取消执行的延迟函数，像[self performSelector:@selector(sendTest) withObject:nilafterDelay:10.0]; 就不在执行
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self.currentImageView toggleState:YES];
 }
-
+#pragma mark- 设置缩略图界面数据 后期需要修改
 - (void)setBrowser:(SGPhotoBrowser *)browser {
+//    设置缩略图界面数据
     _browser = browser;
+    //获取图片总数量
     NSInteger count = browser.numberOfPhotosHandler();
     NSMutableArray *imageViews = @[].mutableCopy;
     for (NSUInteger i = 0; i < count; i++) {
         SGZoomingImageView *imageView = [SGZoomingImageView new];
         SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
+//        加载所有的缩略图
         [imageView.innerImageView sg_setImageWithURL:model.thumbURL model:model];
         imageView.isOrigin = NO;
         [imageViews addObject:imageView];
         [self addSubview:imageView];
+//        计算缩略图的尺寸
         [imageView scaleToFitAnimated:NO];
     }
+//    得到了缩略图的数组
     self.imageViews = imageViews;
     [self layoutImageViews];
 }
 
 - (void)layoutImageViews {
+//    此view为UIScrollView 计算整体长度将每个缩略图分别加载到图片的相应位置
     NSInteger count = self.browser.numberOfPhotosHandler();
     CGFloat imageViewWidth = self.bounds.size.width;
     _pageW = imageViewWidth;
@@ -74,6 +81,7 @@
         [self addSubview:imageView];
         [imageView scaleToFitAnimated:NO];
     }
+
     self.contentOffset = CGPointMake(self.index * _pageW, 0);
 }
 
@@ -86,9 +94,10 @@
 - (void)updateNavBarTitleWithIndex:(NSInteger)index {
     self.controller.navigationItem.title = [NSString stringWithFormat:@"%@ Of %@",@(index + 1),@(self.browser.numberOfPhotosHandler())];
 }
-
+#pragma mark -点击index处的缩略图时调用，来显示原图 到时候根据模型进行替换
 - (void)loadImageAtIndex:(NSInteger)index {
     self.titleIndex = index;
+       // 通过browser的数据源方法获取模型数量
     NSInteger count = self.browser.numberOfPhotosHandler();
     for (NSInteger i = 0; i < count; i++) {
         SGPhotoModel *model = self.browser.photoAtIndexHandler(i);

@@ -34,8 +34,8 @@
     [super viewDidLoad];
     [self initParams];
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+//    展示view
     SGPhotoCollectionView *collectionView = [[SGPhotoCollectionView alloc] initWithFrame:[self getCollectionViewFrame] collectionViewLayout:layout];
-//    collectionView.backgroundColor = [UIColor redColor];
     self.collectionView = collectionView;
     [self.view addSubview:collectionView];
     //初始化界面
@@ -62,6 +62,7 @@
     [self layoutViews];
     [self.view addSubview:toolBar];
     __weak typeof(toolBar) weakToolBar = self.toolBar;
+//    下方工具条第一行按钮回调
     [toolBar.mainToolBar setButtonActionHandlerBlock:^(UIBarButtonItem *item) {
         switch (item.tag) {
             case SGBrowserToolButtonEdit:
@@ -70,6 +71,7 @@
         }
     }];
     WS();
+//    下方工具条第二行按钮回调
     [toolBar.secondToolBar setButtonActionHandlerBlock:^(UIBarButtonItem *item) {
         switch (item.tag) {
             case SGBrowserToolButtonBack: {
@@ -253,6 +255,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSAssert(self.photoAtIndexHandler != nil, @"you must implement 'photoAtIndexHandler' block to provide photos for the browser.");
+//    加载每一个cell
     SGPhotoModel *model = self.photoAtIndexHandler(indexPath.row);
     SGPhotoCell *cell = [SGPhotoCell cellWithCollectionView:collectionView forIndexPaht:indexPath];
     cell.model = model;
@@ -291,6 +294,7 @@
         cell.model = model;
         return;
     }
+    //进入单个图片查看选项
     SGPhotoViewController *vc = [SGPhotoViewController new];
     vc.browser = self;
     vc.index = indexPath.row;

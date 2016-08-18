@@ -98,6 +98,12 @@
 		68F5CE511D362FF100906271 /* SGBrowserMainToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE501D362FF100906271 /* SGBrowserMainToolBar.m */; };
 		68F5CE541D36314200906271 /* SGBrowserSecondToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE531D36314200906271 /* SGBrowserSecondToolBar.m */; };
 		68F7BF761D2FF44600F604ED /* SGAccountSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7BF751D2FF44600F604ED /* SGAccountSet.m */; };
+		9F2EB1461D65528E00BF5137 /* JMBImageTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2EB1451D65528E00BF5137 /* JMBImageTab.m */; };
+		9F39F7706A8D106893FC9A5B /* libPods-SGSecurityAlbum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48EB0F79A77743968BC7271A /* libPods-SGSecurityAlbum.a */; };
+		9F9806401D645D17008F322C /* LKDBColumnDes.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9806391D645D17008F322C /* LKDBColumnDes.m */; };
+		9F9806411D645D17008F322C /* LKDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F98063B1D645D17008F322C /* LKDBModel.m */; };
+		9F9806421D645D17008F322C /* LKDBSQLState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F98063D1D645D17008F322C /* LKDBSQLState.m */; };
+		9F9806431D645D17008F322C /* LKDBTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F98063F1D645D17008F322C /* LKDBTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +124,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		48EB0F79A77743968BC7271A /* libPods-SGSecurityAlbum.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGSecurityAlbum.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6806EAB91D30D28A0044ED1E /* SGFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFileUtil.h; sourceTree = "<group>"; };
 		6806EABA1D30D28A0044ED1E /* SGFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFileUtil.m; sourceTree = "<group>"; };
 		6806EABD1D30DEFA0044ED1E /* SGAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAlbum.h; sourceTree = "<group>"; };
@@ -310,6 +317,18 @@
 		68F5CE531D36314200906271 /* SGBrowserSecondToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBrowserSecondToolBar.m; sourceTree = "<group>"; };
 		68F7BF741D2FF44600F604ED /* SGAccountSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAccountSet.h; sourceTree = "<group>"; };
 		68F7BF751D2FF44600F604ED /* SGAccountSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAccountSet.m; sourceTree = "<group>"; };
+		9F2EB1441D65528E00BF5137 /* JMBImageTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMBImageTab.h; sourceTree = "<group>"; };
+		9F2EB1451D65528E00BF5137 /* JMBImageTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMBImageTab.m; sourceTree = "<group>"; };
+		9F9806381D645D17008F322C /* LKDBColumnDes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBColumnDes.h; sourceTree = "<group>"; };
+		9F9806391D645D17008F322C /* LKDBColumnDes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBColumnDes.m; sourceTree = "<group>"; };
+		9F98063A1D645D17008F322C /* LKDBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBModel.h; sourceTree = "<group>"; };
+		9F98063B1D645D17008F322C /* LKDBModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBModel.m; sourceTree = "<group>"; };
+		9F98063C1D645D17008F322C /* LKDBSQLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBSQLState.h; sourceTree = "<group>"; };
+		9F98063D1D645D17008F322C /* LKDBSQLState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBSQLState.m; sourceTree = "<group>"; };
+		9F98063E1D645D17008F322C /* LKDBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBTool.h; sourceTree = "<group>"; };
+		9F98063F1D645D17008F322C /* LKDBTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBTool.m; sourceTree = "<group>"; };
+		A9FC7312D45D317BC877968F /* Pods-SGSecurityAlbum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGSecurityAlbum.release.xcconfig"; path = "Pods/Target Support Files/Pods-SGSecurityAlbum/Pods-SGSecurityAlbum.release.xcconfig"; sourceTree = "<group>"; };
+		DDBDB52713FFB73E6EB1A1CD /* Pods-SGSecurityAlbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGSecurityAlbum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SGSecurityAlbum/Pods-SGSecurityAlbum.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68128B7C1D2FEE3A0070BE88 /* LocalAuthentication.framework in Frameworks */,
+				9F39F7706A8D106893FC9A5B /* libPods-SGSecurityAlbum.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +372,8 @@
 			children = (
 				6806EABD1D30DEFA0044ED1E /* SGAlbum.h */,
 				6806EABE1D30DEFA0044ED1E /* SGAlbum.m */,
+				9F2EB1441D65528E00BF5137 /* JMBImageTab.h */,
+				9F2EB1451D65528E00BF5137 /* JMBImageTab.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -601,6 +623,7 @@
 			isa = PBXGroup;
 			children = (
 				68128B7B1D2FEE3A0070BE88 /* LocalAuthentication.framework */,
+				48EB0F79A77743968BC7271A /* libPods-SGSecurityAlbum.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -677,6 +700,7 @@
 				6857E9D31D2F909E0013E1DC /* SGSecurityAlbumUITests */,
 				6857E9AD1D2F909D0013E1DC /* Products */,
 				68128B7A1D2FEE390070BE88 /* Frameworks */,
+				69999E85C0B2ED12062CFF47 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -776,6 +800,7 @@
 		6857E9E71D2F971E0013E1DC /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				9F9806371D645D17008F322C /* LKFMDB */,
 				6850D73B1D322A0B0022E455 /* SGPhotoBrowser */,
 				6806EBD91D3106750044ED1E /* QBImagePicker(获取iOS本地图像) */,
 				6806EB911D30FA120044ED1E /* SDWebImage */,
@@ -839,6 +864,30 @@
 			path = SGUIKit;
 			sourceTree = "<group>";
 		};
+		69999E85C0B2ED12062CFF47 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DDBDB52713FFB73E6EB1A1CD /* Pods-SGSecurityAlbum.debug.xcconfig */,
+				A9FC7312D45D317BC877968F /* Pods-SGSecurityAlbum.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9F9806371D645D17008F322C /* LKFMDB */ = {
+			isa = PBXGroup;
+			children = (
+				9F9806381D645D17008F322C /* LKDBColumnDes.h */,
+				9F9806391D645D17008F322C /* LKDBColumnDes.m */,
+				9F98063A1D645D17008F322C /* LKDBModel.h */,
+				9F98063B1D645D17008F322C /* LKDBModel.m */,
+				9F98063C1D645D17008F322C /* LKDBSQLState.h */,
+				9F98063D1D645D17008F322C /* LKDBSQLState.m */,
+				9F98063E1D645D17008F322C /* LKDBTool.h */,
+				9F98063F1D645D17008F322C /* LKDBTool.m */,
+			);
+			path = LKFMDB;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -846,9 +895,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6857E9D91D2F909E0013E1DC /* Build configuration list for PBXNativeTarget "SGSecurityAlbum" */;
 			buildPhases = (
+				71FE6F12163D53844A6324C0 /* [CP] Check Pods Manifest.lock */,
 				6857E9A81D2F909D0013E1DC /* Sources */,
 				6857E9A91D2F909D0013E1DC /* Frameworks */,
 				6857E9AA1D2F909D0013E1DC /* Resources */,
+				2092915FC579BF9A0F9C08BD /* [CP] Embed Pods Frameworks */,
+				D301E762F6BEC1BF66C87E28 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -983,6 +1035,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2092915FC579BF9A0F9C08BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SGSecurityAlbum/Pods-SGSecurityAlbum-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71FE6F12163D53844A6324C0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D301E762F6BEC1BF66C87E28 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SGSecurityAlbum/Pods-SGSecurityAlbum-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6857E9A81D2F909D0013E1DC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -993,6 +1093,7 @@
 				6806EBF71D3106750044ED1E /* QBAlbumsViewController.m in Sources */,
 				6806EBF91D3106750044ED1E /* QBAssetsViewController.m in Sources */,
 				6857EA0F1D2FA4120013E1DC /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				9F9806411D645D17008F322C /* LKDBModel.m in Sources */,
 				6857EA0D1D2FA4120013E1DC /* MASViewConstraint.m in Sources */,
 				6857EA081D2FA4120013E1DC /* MASCompositeConstraint.m in Sources */,
 				68128B6A1D2FDF0F0070BE88 /* SGRegisterView.m in Sources */,
@@ -1004,11 +1105,13 @@
 				6850D7411D322ADE0022E455 /* SGPhotoCollectionView.m in Sources */,
 				6857EA0E1D2FA4120013E1DC /* NSArray+MASAdditions.m in Sources */,
 				6857E9B41D2F909D0013E1DC /* AppDelegate.m in Sources */,
+				9F9806431D645D17008F322C /* LKDBTool.m in Sources */,
 				6806EBBA1D30FA120044ED1E /* SDWebImageManager.m in Sources */,
 				6806EBC11D30FA120044ED1E /* UIImageView+WebCache.m in Sources */,
 				68F7BF761D2FF44600F604ED /* SGAccountSet.m in Sources */,
 				6857E9B11D2F909D0013E1DC /* main.m in Sources */,
 				6806EB8C1D30F9F20044ED1E /* MWPhotoBrowser.m in Sources */,
+				9F2EB1461D65528E00BF5137 /* JMBImageTab.m in Sources */,
 				6806EBFD1D3106750044ED1E /* QBSlomoIconView.m in Sources */,
 				68F5CE481D35FC3F00906271 /* UIBlockAlertView.m in Sources */,
 				6806EBB31D30FA120044ED1E /* MKAnnotationView+WebCache.m in Sources */,
@@ -1019,6 +1122,7 @@
 				6857EA0B1D2FA4120013E1DC /* MASLayoutConstraint.m in Sources */,
 				6857E9EA1D2F98040013E1DC /* SGWelcomeViewController.m in Sources */,
 				682406EE1D30C10200023559 /* SGHomeViewCell.m in Sources */,
+				9F9806401D645D17008F322C /* LKDBColumnDes.m in Sources */,
 				6850D74A1D3251CD0022E455 /* SGPhotoViewController.m in Sources */,
 				6857EA111D2FA4120013E1DC /* ViewController+MASAdditions.m in Sources */,
 				68128B641D2FD3320070BE88 /* SGAccountManager.m in Sources */,
@@ -1033,6 +1137,7 @@
 				6806EBB81D30FA120044ED1E /* SDWebImageDownloader.m in Sources */,
 				6806EBCC1D30FA660044ED1E /* DACircularProgressView.m in Sources */,
 				6857EA0C1D2FA4120013E1DC /* MASViewAttribute.m in Sources */,
+				9F9806421D645D17008F322C /* LKDBSQLState.m in Sources */,
 				6857EA141D2FA4FA0013E1DC /* SGWelcomeView.m in Sources */,
 				6850D74D1D3257EC0022E455 /* SGPhotoView.m in Sources */,
 				68128B771D2FEA5C0070BE88 /* MBProgressHUD+SGExtension.m in Sources */,
@@ -1206,6 +1311,7 @@
 		};
 		6857E9DA1D2F909E0013E1DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDBDB52713FFB73E6EB1A1CD /* Pods-SGSecurityAlbum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1223,6 +1329,7 @@
 		};
 		6857E9DB1D2F909E0013E1DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9FC7312D45D317BC877968F /* Pods-SGSecurityAlbum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
