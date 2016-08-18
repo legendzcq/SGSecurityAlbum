@@ -16,7 +16,8 @@
 #import "SDWebImageManager.h"
 #import "SGUIKit.h"
 #import "SDWebImagePrefetcher.h"
-
+#import "LKDBTool.h"
+#import "JMBImageTab.h"
 @interface SGPhotoBrowser () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout> {
     CGFloat _margin, _gutter;
 }
@@ -156,21 +157,36 @@
         SGPhotoModel *model = self.selectModels[i];
         NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
             __block BOOL finish = NO;
-            NSURL *url = model.photoURL;
-            if (![url isFileURL]) {
-                [[SDWebImageManager sharedManager] downloadImageWithURL:url options:SDWebImageDownloaderHighPriority|SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//            NSURL *url = model.photoURL;
+//            int imageID = model.ImageID;
+//            if (![url isFileURL]) {
+//                [[SDWebImageManager sharedManager] downloadImageWithURL:url options:SDWebImageDownloaderHighPriority|SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+//                    [lib writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
+//                        opCompletionBlock();
+//                        finish = YES;
+//                    }];
+//                }];
+//            } else {
+            
+            
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                LKDBSQLState *sql = [[LKDBSQLState alloc] object:[JMBImageTab class] type:WHERE key:@"imageID" opt:@"=" value:model.ImageID];
+                
+                NSArray *dataArray = [JMBImageTab findByCriteria:[sql sqlOptionStr]];
+                
+                for (JMBImageTab *obj in dataArray) {
+                    UIImage *image =[UIImage imageWithData:obj.OrgImageData];
                     [lib writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
                         opCompletionBlock();
                         finish = YES;
                     }];
-                }];
-            } else {
-                UIImage *image = [UIImage imageWithContentsOfFile:url.path];
-                [lib writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
-                    opCompletionBlock();
-                    finish = YES;
-                }];
-            }
+                }
+                
+            });
+            
+            
+
+//            }
             while (!finish);
         }];
         if (lastOp != nil) {
@@ -194,8 +210,11 @@
     NSFileManager *mgr = [NSFileManager defaultManager];
     for (NSUInteger i = 0; i < count; i++) {
         SGPhotoModel *model = self.selectModels[i];
-        [mgr removeItemAtPath:model.photoURL.path error:nil];
-        [mgr removeItemAtPath:model.thumbURL.path error:nil];
+//        [mgr removeItemAtPath:model.photoURL.path error:nil];
+//        [mgr removeItemAtPath:model.thumbURL.path error:nil];
+        LKDBSQLState *sql = [[LKDBSQLState alloc] object:[JMBImageTab class] type:WHERE key:@"imageID" opt:@"=" value:model.ImageID];
+        
+        [JMBImageTab deleteObjectsWithFormat:[sql sqlOptionStr]];
     }
     self.reloadHandler();
 }

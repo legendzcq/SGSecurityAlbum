@@ -16,7 +16,7 @@
 @property (nonatomic, strong) SGPhotoModel *model;
 
 
-- (void)sg_setImageWithURL:(NSURL *)url;
-- (void)sg_setImageWithURL:(NSURL *)url model:(SGPhotoModel *)model;
+- (void)sg_setImageWithURL:(NSString *)imageID isThumb:(BOOL)isThumb;
+- (void)sg_setImageWithURL:(NSString *)imageID model:(SGPhotoModel *)model isThumb:(BOOL)isThumb;
 
 @end

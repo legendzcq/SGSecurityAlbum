@@ -10,8 +10,7 @@
 
 @interface SGPhotoModel : NSObject
 
-@property (nonatomic, copy) NSURL *photoURL;
-@property (nonatomic, copy) NSURL *thumbURL;
+@property (nonatomic, copy) NSString * ImageID;
 @property (nonatomic, assign) BOOL isSelected;
 
 @end

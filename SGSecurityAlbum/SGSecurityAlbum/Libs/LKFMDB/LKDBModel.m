@@ -364,7 +364,6 @@
     va_start(ap, format);
     NSString *criteria = [[NSString alloc] initWithFormat:format locale:[NSLocale currentLocale] arguments:ap];
     va_end(ap);
-    
     return [self deleteObjectsByCriteria:criteria];
 }
 
@@ -390,6 +389,7 @@
     [lkDB.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *tableName = NSStringFromClass(self.class);
         NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@",tableName];
+        NSLog(@"%@",sql);
         FMResultSet *resultSet = [db executeQuery:sql];
         while ([resultSet next]) {
             LKDBModel *model = [[self.class alloc] init];
@@ -466,7 +466,6 @@
         NSString *tableName = NSStringFromClass(self.class);
         NSArray *columnType = [self.class getAllProperties][@"type"];
         NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ %@",tableName,criteria];
-        
         if ([[columnType firstObject] isEqualToString:SQLTEXT]) {
             
         }

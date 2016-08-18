@@ -73,13 +73,13 @@
 #pragma mark -在此处根据URL赋值  后期可以修改为根据ID然后查询数据库赋值
 - (void)setModel:(SGPhotoModel *)model {
     _model = model;
-    NSURL *thumbURL = model.thumbURL;
+//    NSURL *thumbURL = model.thumbURL;
 //    在此处根据URL赋值  后期可以修改为根据ID然后查询数据库赋值
-    if ([thumbURL isFileURL]) {
-        self.imageView.image = [UIImage imageWithContentsOfFile:thumbURL.path];
-    } else {
-        [self.imageView sg_setImageWithURL:thumbURL model:model];
-    }
+//    if ([thumbURL isFileURL]) {
+//        self.imageView.image = [UIImage imageWithContentsOfFile:thumbURL.path];
+//    } else {
+        [self.imageView sg_setImageWithURL:model.ImageID model:model isThumb:YES];
+//    }
     self.sg_select = model.isSelected;
 }
 

@@ -13,6 +13,8 @@
 #import "SGPhotoToolBar.h"
 #import "SGUIKit.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "JMBImageTab.h"
+#import "LKDBTool.h"
 
 @interface SGPhotoViewController ()
 
@@ -97,8 +99,9 @@
 - (void)trashAction {
     [[[SGBlockActionSheet alloc] initWithTitle:@"Please Confirm Delete" callback:^(UIActionSheet *actionSheet, NSInteger buttonIndex) {
         if (buttonIndex == 0) {
-            [[NSFileManager defaultManager] removeItemAtPath:self.photoView.currentPhoto.photoURL.path error:nil];
-            [[NSFileManager defaultManager] removeItemAtPath:self.photoView.currentPhoto.thumbURL.path error:nil];
+            LKDBSQLState *sql = [[LKDBSQLState alloc] object:[JMBImageTab class] type:WHERE key:@"imageID" opt:@"=" value:self.photoView.currentPhoto.ImageID];
+            NSLog(@"%@",[sql sqlOptionStr]);
+            [JMBImageTab deleteObjectsWithFormat:[sql sqlOptionStr]];
             [self.navigationController popViewControllerAnimated:YES];
             NSAssert(self.browser.reloadHandler != nil, @"you must implement 'reloadHandler' block to reload files while delete");
             self.browser.reloadHandler();

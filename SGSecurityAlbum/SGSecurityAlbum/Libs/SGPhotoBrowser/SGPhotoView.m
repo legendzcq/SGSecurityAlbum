@@ -55,7 +55,8 @@
         SGZoomingImageView *imageView = [SGZoomingImageView new];
         SGPhotoModel *model = self.browser.photoAtIndexHandler(i);
 //        加载所有的缩略图
-        [imageView.innerImageView sg_setImageWithURL:model.thumbURL model:model];
+        [imageView.innerImageView sg_setImageWithURL:model.ImageID model:model isThumb:YES];
+//        [imageView.innerImageView sg_setImageWithURL:model.thumbURL model:model];
         imageView.isOrigin = NO;
         [imageViews addObject:imageView];
         [self addSubview:imageView];
@@ -107,16 +108,16 @@
         } else {
             [imageView scaleToFitIfNeededAnimated:NO];
         }
-        NSURL *photoURL = model.photoURL;
-        NSURL *thumbURL = model.thumbURL;
+//        NSURL *photoURL = model.photoURL;
+//        NSURL *thumbURL = model.thumbURL;
         if (i >= index - 1 && i <= index + 1) {
             if (imageView.isOrigin) continue;
-            [imageView.innerImageView sg_setImageWithURL:photoURL model:model];
+            [imageView.innerImageView sg_setImageWithURL:model.ImageID model:model isThumb:NO];
             imageView.isOrigin = YES;
             [imageView scaleToFitAnimated:NO];
         } else {
             if (!imageView.isOrigin) continue;
-            [imageView.innerImageView sg_setImageWithURL:thumbURL model:model];
+            [imageView.innerImageView sg_setImageWithURL:model.ImageID model:model isThumb:YES];
             imageView.isOrigin = NO;
             [imageView scaleToFitAnimated:NO];
         }

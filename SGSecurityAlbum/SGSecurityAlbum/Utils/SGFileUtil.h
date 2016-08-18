@@ -15,8 +15,7 @@
 
 + (instancetype)sharedUtil;
 + (NSString *)getFileNameFromPath:(NSString *)filePath;
-+ (void)savePhoto:(UIImage *)image toRootPath:(NSString *)rootPath withName:(NSString *)name;
-+ (void)saveThumb:(UIImage *)image toRootPath:(NSString *)rootPath withName:(NSString *)name;
++ (void)saveThumb:(UIImage *)image toRootPath:(NSString *)rootPath withName:(NSString *)name savePhoto:(UIImage *)orgimage;
 + (NSString *)photoPathForRootPath:(NSString *)rootPath;
 + (NSString *)thumbPathForRootPath:(NSString *)rootPath;
 

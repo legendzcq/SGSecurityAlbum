@@ -32,57 +32,26 @@
     return [rootPath stringByAppendingPathComponent:@"Thumb"];
 }
 
-+ (void)savePhoto:(UIImage *)image toRootPath:(NSString *)rootPath withName:(NSString *)name {
-    NSData *imageDate = UIImagePNGRepresentation(image);
-    rootPath = [self photoPathForRootPath:rootPath];
-    NSFileManager *mgr = [NSFileManager defaultManager];
-    if(![mgr fileExistsAtPath:rootPath isDirectory:nil]) {
-        [mgr createDirectoryAtPath:rootPath withIntermediateDirectories:NO attributes:nil error:nil];
-    }
-    rootPath = [rootPath stringByAppendingPathComponent:name];
-    [imageDate writeToFile:rootPath atomically:YES];
-    //存储数据库
-    JMBImageTab *ImageTab = [JMBImageTab new];
-    ImageTab.imageID = arc4random() % 100;
-    ImageTab.ImageName =name;
-    ImageTab.imageData =imageDate;
-    ImageTab.SaveFinder = @"1";
-    ImageTab.SaveType = 1;
-    NSDate *  senddate=[NSDate date];
-    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-    [dateformatter setDateFormat:@"YYYY-MM-dd HH:mm"];
-    NSString *  locationString=[dateformatter stringFromDate:senddate];
-    ImageTab.SaveTime =locationString ;
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [ImageTab save];
-    });
-}
 
-+ (void)saveThumb:(UIImage *)image toRootPath:(NSString *)rootPath withName:(NSString *)name {
-    NSData *imageDate = UIImagePNGRepresentation(image);
-    rootPath = [self thumbPathForRootPath:rootPath];
-    NSFileManager *mgr = [NSFileManager defaultManager];
-    if(![mgr fileExistsAtPath:rootPath isDirectory:nil]) {
-        [mgr createDirectoryAtPath:rootPath withIntermediateDirectories:NO attributes:nil error:nil];
-    }
-    rootPath = [rootPath stringByAppendingPathComponent:name];
-    [imageDate writeToFile:rootPath atomically:YES];
+
++ (void)saveThumb:(UIImage *)thumbimage toRootPath:(NSString *)rootPath withName:(NSString *)name savePhoto:(UIImage *)orgimage{
+    NSData *ThumbimageDate = UIImagePNGRepresentation(thumbimage);
+    NSData *OrgimageDate = UIImagePNGRepresentation(orgimage);
+
     JMBImageTab *ImageTab = [JMBImageTab new];
-    ImageTab.imageID = arc4random() % 100;
+    ImageTab.imageID =[NSString stringWithFormat:@"%u",arc4random() % 10000];
     ImageTab.ImageName =name;
-    ImageTab.imageData =imageDate;
-    
+    ImageTab.OrgImageData =OrgimageDate;
+    ImageTab.ThumbImageData = ThumbimageDate;
     ImageTab.SaveFinder = @"1";
-    ImageTab.SaveType = 0;
-    
     NSDate *  senddate=[NSDate date];
     NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
     [dateformatter setDateFormat:@"YYYY-MM-dd HH:mm"];
     NSString *  locationString=[dateformatter stringFromDate:senddate];
     ImageTab.SaveTime =locationString ;
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [ImageTab save];
-    });
+//    });
 }
 
 - (void)setAccount:(SGAccount *)account {
