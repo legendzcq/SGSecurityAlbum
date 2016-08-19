@@ -10,6 +10,6 @@
 
 @interface SGPhotoBrowserViewController : SGPhotoBrowser
 
-@property (nonatomic, copy) NSString *rootPath;
+@property (nonatomic, copy) NSString *FinderName;
 
 @end

@@ -8,7 +8,8 @@
 
 #import "SGHomeView.h"
 #import "SGHomeViewCell.h"
-
+#import "JMBFinderTab.h"
+#import "LKDBTool.h"
 @interface SGHomeView () <UICollectionViewDataSource, UIActionSheetDelegate>
 
 @property (nonatomic, strong) SGAlbum *currentSelectAlbum;
@@ -57,7 +58,9 @@
 #pragma mark UIActionSheet Delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 0) {
-        [[NSFileManager defaultManager] removeItemAtPath:self.currentSelectAlbum.path error:nil];
+        
+        LKDBSQLState *sql = [[LKDBSQLState alloc] object:[JMBFinderTab class] type:WHERE key:@"FinderName" opt:@"=" value:self.currentSelectAlbum.name];
+        [JMBFinderTab deleteObjectsWithFormat:[sql sqlOptionStr]];
         if (self.actionBlock) {
             self.actionBlock();
         }

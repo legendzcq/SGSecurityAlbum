@@ -382,14 +382,16 @@
 }
 
 /** 查询全部数据 */
-+ (NSArray *)findAll
++ (NSArray *)findAllselectcondition:(NSString *)selectsql
 {
+    if ((selectsql.length==0) || ([selectsql isEqualToString:@""])) {
+        selectsql = [NSString stringWithFormat:@"*"];
+    }
     LKDBTool *lkDB = [LKDBTool shareInstance];
     NSMutableArray *users = [NSMutableArray array];
     [lkDB.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *tableName = NSStringFromClass(self.class);
-        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@",tableName];
-        NSLog(@"%@",sql);
+        NSString *sql = [NSString stringWithFormat:@"SELECT %@ FROM %@",selectsql,tableName];
         FMResultSet *resultSet = [db executeQuery:sql];
         while ([resultSet next]) {
             LKDBModel *model = [[self.class alloc] init];
@@ -427,7 +429,7 @@
 /** 查找某条数据 */
 + (instancetype)findFirstByCriteria:(NSString *)criteria
 {
-    NSArray *results = [self.class findByCriteria:criteria];
+    NSArray *results = [self.class findByCriteria:criteria selectcondition:nil];
     if (results.count < 1) {
         return nil;
     }
@@ -454,18 +456,21 @@
     NSString *criteria = [[NSString alloc] initWithFormat:format locale:[NSLocale currentLocale] arguments:ap];
     va_end(ap);
     
-    return [self findByCriteria:criteria];
+    return [self findByCriteria:criteria selectcondition:nil];
 }
 
 /** 通过条件查找数据 */
-+ (NSArray *)findByCriteria:(NSString *)criteria
++ (NSArray *)findByCriteria:(NSString *)criteria selectcondition:(NSString *)selectsql
 {
+    if ((selectsql.length==0) || ([selectsql isEqualToString:@""])) {
+        selectsql = [NSString stringWithFormat:@"*"];
+    }
     LKDBTool *lkDB = [LKDBTool shareInstance];
     NSMutableArray *users = [NSMutableArray array];
     [lkDB.dbQueue inDatabase:^(FMDatabase *db) {
         NSString *tableName = NSStringFromClass(self.class);
         NSArray *columnType = [self.class getAllProperties][@"type"];
-        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ %@",tableName,criteria];
+        NSString *sql = [NSString stringWithFormat:@"SELECT %@ FROM %@ %@",selectsql,tableName,criteria];
         if ([[columnType firstObject] isEqualToString:SQLTEXT]) {
             
         }

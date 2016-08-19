@@ -172,7 +172,7 @@
             dispatch_async(dispatch_get_global_queue(0, 0), ^{
                 LKDBSQLState *sql = [[LKDBSQLState alloc] object:[JMBImageTab class] type:WHERE key:@"imageID" opt:@"=" value:model.ImageID];
                 
-                NSArray *dataArray = [JMBImageTab findByCriteria:[sql sqlOptionStr]];
+                NSArray *dataArray = [JMBImageTab findByCriteria:[sql sqlOptionStr] selectcondition:@"OrgImageData"];
                 
                 for (JMBImageTab *obj in dataArray) {
                     UIImage *image =[UIImage imageWithData:obj.OrgImageData];

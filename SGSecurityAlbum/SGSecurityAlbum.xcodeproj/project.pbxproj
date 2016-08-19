@@ -98,6 +98,8 @@
 		68F5CE511D362FF100906271 /* SGBrowserMainToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE501D362FF100906271 /* SGBrowserMainToolBar.m */; };
 		68F5CE541D36314200906271 /* SGBrowserSecondToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F5CE531D36314200906271 /* SGBrowserSecondToolBar.m */; };
 		68F7BF761D2FF44600F604ED /* SGAccountSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 68F7BF751D2FF44600F604ED /* SGAccountSet.m */; };
+		9F199D691D66CA02000338EB /* NSData+Md5.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F199D681D66CA02000338EB /* NSData+Md5.m */; };
+		9F199D6C1D66CC14000338EB /* JMBFinderTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F199D6B1D66CC14000338EB /* JMBFinderTab.m */; };
 		9F2EB1461D65528E00BF5137 /* JMBImageTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F2EB1451D65528E00BF5137 /* JMBImageTab.m */; };
 		9F39F7706A8D106893FC9A5B /* libPods-SGSecurityAlbum.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48EB0F79A77743968BC7271A /* libPods-SGSecurityAlbum.a */; };
 		9F9806401D645D17008F322C /* LKDBColumnDes.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F9806391D645D17008F322C /* LKDBColumnDes.m */; };
@@ -317,6 +319,10 @@
 		68F5CE531D36314200906271 /* SGBrowserSecondToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGBrowserSecondToolBar.m; sourceTree = "<group>"; };
 		68F7BF741D2FF44600F604ED /* SGAccountSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAccountSet.h; sourceTree = "<group>"; };
 		68F7BF751D2FF44600F604ED /* SGAccountSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAccountSet.m; sourceTree = "<group>"; };
+		9F199D671D66CA02000338EB /* NSData+Md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Md5.h"; sourceTree = "<group>"; };
+		9F199D681D66CA02000338EB /* NSData+Md5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Md5.m"; sourceTree = "<group>"; };
+		9F199D6A1D66CC14000338EB /* JMBFinderTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMBFinderTab.h; sourceTree = "<group>"; };
+		9F199D6B1D66CC14000338EB /* JMBFinderTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMBFinderTab.m; sourceTree = "<group>"; };
 		9F2EB1441D65528E00BF5137 /* JMBImageTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMBImageTab.h; sourceTree = "<group>"; };
 		9F2EB1451D65528E00BF5137 /* JMBImageTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMBImageTab.m; sourceTree = "<group>"; };
 		9F9806381D645D17008F322C /* LKDBColumnDes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBColumnDes.h; sourceTree = "<group>"; };
@@ -374,6 +380,8 @@
 				6806EABE1D30DEFA0044ED1E /* SGAlbum.m */,
 				9F2EB1441D65528E00BF5137 /* JMBImageTab.h */,
 				9F2EB1451D65528E00BF5137 /* JMBImageTab.m */,
+				9F199D6A1D66CC14000338EB /* JMBFinderTab.h */,
+				9F199D6B1D66CC14000338EB /* JMBFinderTab.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -544,6 +552,8 @@
 		68128B581D2FC8810070BE88 /* Catetory */ = {
 			isa = PBXGroup;
 			children = (
+				9F199D671D66CA02000338EB /* NSData+Md5.h */,
+				9F199D681D66CA02000338EB /* NSData+Md5.m */,
 				68128B591D2FC89A0070BE88 /* NSString+MD5.h */,
 				68128B5A1D2FC89A0070BE88 /* NSString+MD5.m */,
 			);
@@ -1089,6 +1099,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68F5CE541D36314200906271 /* SGBrowserSecondToolBar.m in Sources */,
+				9F199D6C1D66CC14000338EB /* JMBFinderTab.m in Sources */,
 				6806EBC01D30FA120044ED1E /* UIImageView+HighlightedWebCache.m in Sources */,
 				6806EBF71D3106750044ED1E /* QBAlbumsViewController.m in Sources */,
 				6806EBF91D3106750044ED1E /* QBAssetsViewController.m in Sources */,
@@ -1115,6 +1126,7 @@
 				6806EBFD1D3106750044ED1E /* QBSlomoIconView.m in Sources */,
 				68F5CE481D35FC3F00906271 /* UIBlockAlertView.m in Sources */,
 				6806EBB31D30FA120044ED1E /* MKAnnotationView+WebCache.m in Sources */,
+				9F199D691D66CA02000338EB /* NSData+Md5.m in Sources */,
 				68F5CE4E1D3624BD00906271 /* SGBlockToolBar.m in Sources */,
 				6806EBB41D30FA120044ED1E /* NSData+ImageContentType.m in Sources */,
 				6806EBCE1D30FA660044ED1E /* LICENSE.md in Sources */,

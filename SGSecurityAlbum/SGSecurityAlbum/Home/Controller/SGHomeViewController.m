@@ -10,6 +10,8 @@
 #import "SGHomeViewController.h"
 #import "SGHomeView.h"
 #import "AppDelegate.h"
+#import "JMBFinderTab.h"
+#import "LKDBTool.h"
 
 @interface SGHomeViewController () <UICollectionViewDelegateFlowLayout, UIAlertViewDelegate>
 {
@@ -66,22 +68,20 @@
 
 #pragma mark - 解析数据  修改成读取数据库
 - (void)loadFiles {
-    SGFileUtil *util = [SGFileUtil sharedUtil];
-    NSString *rootPath = util.rootPath;
-    NSFileManager *mgr = [NSFileManager defaultManager];
+
     NSMutableArray<SGAlbum *> *albums = @[].mutableCopy;
     //绘制添加文件夹数据
     SGAlbum *addBtnAlbum = [SGAlbum new];
     addBtnAlbum.type = SGAlbumButtonTypeAddButton;
     [albums addObject:addBtnAlbum];
-    NSArray *fileNames = [mgr contentsOfDirectoryAtPath:rootPath error:nil];
-    for (NSUInteger i = 0; i < fileNames.count; i++) {
-        NSString *fileName = fileNames[i];
+    for (JMBFinderTab *obj in [JMBFinderTab findAllselectcondition:nil]) {
         SGAlbum *album = [SGAlbum new];
-        album.name = fileName;
-        album.path = [[SGFileUtil sharedUtil].rootPath stringByAppendingPathComponent:fileName];
+        album.name = obj.FinderName;
         [albums addObject:album];
     }
+    
+    
+    
     self.homeView.albums = albums;
     [self.homeView reloadData];
 }
@@ -102,7 +102,7 @@
         [alertView show];
     } else {
         SGPhotoBrowserViewController *browser = [SGPhotoBrowserViewController new];
-        browser.rootPath = album.path;
+        browser.FinderName = album.name;
         [self.navigationController pushViewController:browser animated:YES];
     }
 }
@@ -112,16 +112,24 @@
     if (buttonIndex == 1) {
         NSString *folderName = [alertView textFieldAtIndex:0].text;
         if (!folderName.length) {
-            [MBProgressHUD showError:@"Folder Name Cannot be Empty"];
+            [MBProgressHUD showError:@"文件夹不能为空"];
             return;
         }
-        NSFileManager *mgr = [NSFileManager defaultManager];
-        NSString *folderPath = [[SGFileUtil sharedUtil].rootPath stringByAppendingPathComponent:folderName];
-        if ([mgr fileExistsAtPath:folderPath isDirectory:nil]) {
-            [MBProgressHUD showError:@"Folder Exists"];
+        LKDBSQLState *sql = [[LKDBSQLState alloc] object:[JMBFinderTab class] type:WHERE key:@"FinderName" opt:@"=" value:folderName];
+        NSArray *dataArray = [JMBFinderTab findByCriteria:[sql sqlOptionStr] selectcondition:nil];
+        if (dataArray.count >0) {
+            [MBProgressHUD showError:@"文件夹不能为重名"];
             return;
         }
-        [mgr createDirectoryAtPath:folderPath withIntermediateDirectories:NO attributes:nil error:nil];
+        
+        JMBFinderTab * tab = [JMBFinderTab new];
+        tab.FinderID = [folderName MD5];
+        tab.FinderName = folderName;
+        if (![tab save]) {
+            [MBProgressHUD showError:@"文件夹新建错误"];
+            return;
+        };
+
         [self loadFiles];
     }
 }

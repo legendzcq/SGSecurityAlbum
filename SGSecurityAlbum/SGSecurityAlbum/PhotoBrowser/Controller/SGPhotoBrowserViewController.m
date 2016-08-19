@@ -9,6 +9,7 @@
 #import "SGPhotoBrowserViewController.h"
 #import "QBImagePickerController.h"
 #import "JMBImageTab.h"
+#import "LKDBTool.h"
 
 @interface SGPhotoBrowserViewController () <QBImagePickerControllerDelegate>
 
@@ -27,7 +28,7 @@
 
 - (void)commonInit {
     self.numberOfPhotosPerRow = 4;
-    self.title = [SGFileUtil getFileNameFromPath:self.rootPath];
+    self.title = self.FinderName;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
     WS();
     [self setNumberOfPhotosHandlerBlock:^NSInteger{
@@ -43,8 +44,11 @@
 
 - (void)loadFiles {
     NSMutableArray *photoModels = @[].mutableCopy;
+//    [JMBImageTab findAllselectcondition:@"imageID"]
+    LKDBSQLState *sql = [[LKDBSQLState alloc] object:[JMBImageTab class] type:WHERE key:@"SaveFinder" opt:@"=" value:self.FinderName];
     
-    for (JMBImageTab *obj in [JMBImageTab findAll]) {
+    NSArray *dataArray = [JMBImageTab findByCriteria:[sql sqlOptionStr] selectcondition:@"imageID"];
+    for (JMBImageTab *obj in dataArray) {
                 SGPhotoModel *model = [SGPhotoModel new];
                 model.ImageID = obj.imageID;
                 [photoModels addObject:model];
@@ -103,7 +107,8 @@
                 //原始图片
                __block UIImage * orgresult = result;
                 [imageManager requestImageForAsset:asset targetSize:CGSizeMake(120, 120) contentMode:PHImageContentModeAspectFill options:op resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                    [SGFileUtil saveThumb:result toRootPath:self.rootPath withName:fileName savePhoto:orgresult];
+//                    [SGFileUtil saveThumb:result toRootPath:self.rootPath withName:fileName savePhoto:orgresult];
+                    [SGFileUtil saveThumb:result toFinderName:self.FinderName withName:fileName savePhoto:orgresult];
                     hudProgressBlock(++progressCount);
                 }];
             }];

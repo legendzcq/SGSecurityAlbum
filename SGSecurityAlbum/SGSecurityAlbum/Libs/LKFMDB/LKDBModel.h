@@ -57,7 +57,7 @@
 + (BOOL)clearTable;
 
 /** 查询全部数据 */
-+ (NSArray *)findAll;
++ (NSArray *)findAllselectcondition:(NSString *)selectsql;
 
 /** 通过主键查询 */
 + (instancetype)findByPK:(id)inPk;
@@ -72,7 +72,7 @@
 /** 通过条件查找数据
  * 这样可以进行分页查询 @" WHERE pk > 5 limit 10"
  */
-+ (NSArray *)findByCriteria:(NSString *)criteria;
++ (NSArray *)findByCriteria:(NSString *)criteria selectcondition:(NSString *)selectsql;
 /**
  * 创建表
  * 如果已经创建，返回YES

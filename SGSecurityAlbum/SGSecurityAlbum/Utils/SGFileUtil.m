@@ -9,6 +9,7 @@
 #import "SGFileUtil.h"
 #import "LKDBTool.h"
 #import "JMBImageTab.h"
+#import "NSData+Md5.h"
 @implementation SGFileUtil
 
 + (instancetype)sharedUtil {
@@ -34,16 +35,17 @@
 
 
 
-+ (void)saveThumb:(UIImage *)thumbimage toRootPath:(NSString *)rootPath withName:(NSString *)name savePhoto:(UIImage *)orgimage{
++ (void)saveThumb:(UIImage *)thumbimage toFinderName:(NSString *)FinderName withName:(NSString *)name savePhoto:(UIImage *)orgimage{
     NSData *ThumbimageDate = UIImagePNGRepresentation(thumbimage);
     NSData *OrgimageDate = UIImagePNGRepresentation(orgimage);
 
     JMBImageTab *ImageTab = [JMBImageTab new];
-    ImageTab.imageID =[NSString stringWithFormat:@"%u",arc4random() % 10000];
+    ImageTab.imageID =[OrgimageDate imageIDString];
+//    [NSString stringWithFormat:@"%u",arc4random() % 10000];
     ImageTab.ImageName =name;
     ImageTab.OrgImageData =OrgimageDate;
     ImageTab.ThumbImageData = ThumbimageDate;
-    ImageTab.SaveFinder = @"1";
+    ImageTab.SaveFinder = FinderName;
     NSDate *  senddate=[NSDate date];
     NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
     [dateformatter setDateFormat:@"YYYY-MM-dd HH:mm"];

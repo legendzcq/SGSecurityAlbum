@@ -16,7 +16,7 @@ typedef NS_OPTIONS(NSInteger, SGAlbumType) {
 @interface SGAlbum : NSObject
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *path;
+//@property (nonatomic, copy) NSString *path;
 @property (nonatomic, copy) NSString *coverImageURL;
 @property (nonatomic, assign) SGAlbumType type;
 
