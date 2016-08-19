@@ -97,7 +97,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SGAlbum *album = self.homeView.albums[indexPath.row];
     if (album.type == SGAlbumButtonTypeAddButton) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"New Folder" message:@"Please enter folder name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"新建文件夹" message:@"请输入文件夹名称" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
         [alertView show];
     } else {
